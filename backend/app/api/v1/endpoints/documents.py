@@ -3,7 +3,9 @@ from fastapi import APIRouter
 from fastapi import File
 from fastapi import UploadFile
 from backend.app.services.pdf_loader import load_pdf
-
+from backend.app.services.document_registry import (
+    list_uploaded_documents
+)
 router = APIRouter()
 
 UPLOAD_DIR = "data/uploads"
@@ -31,4 +33,11 @@ async def upload_document(
         "filename": file.filename,
         "pages_loaded": len(documents),
         "status": "uploaded"
+    }
+
+@router.get("/documents")
+def get_documents():
+
+    return {
+        "documents": list_uploaded_documents()
     }
