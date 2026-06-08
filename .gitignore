@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Env
+venv/
+.venv/
+
+# Environment Variables
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Streamlit
+.streamlit/
+
+# Docker
+docker-data/
+
+# Testing
+.pytest_cache/
+
+# Build
+dist/
+build/
+
+# Database
+*.db
+
+# Vector DB
+chroma/
+faiss_index/
