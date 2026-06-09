@@ -42,3 +42,14 @@ build/
 # Vector DB
 chroma/
 faiss_index/
+
+.venv/
+.venv311/
+
+__pycache__/
+
+data/chroma_db/
+
+*.pyc
+
+.env
