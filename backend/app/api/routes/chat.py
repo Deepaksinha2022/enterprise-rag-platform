@@ -1,9 +1,8 @@
 from fastapi import APIRouter
 
-from backend.app.services.retriever import (
-    retrieve
+from backend.app.services.hybrid_service import (
+    hybrid_retrieve
 )
-
 from backend.app.services.prompt_builder import (
     build_context,
     build_prompt
@@ -22,7 +21,7 @@ async def ask_question(
     query: str
 ):
 
-    results = retrieve(
+    results = hybrid_retrieve(
         query
     )
 
@@ -39,7 +38,27 @@ async def ask_question(
         prompt
     )
 
+    # sources = []
+
+    # for metadata in results["metadatas"][0]:
+
+    #     sources.append(
+
+    #     f"{metadata['filename']} | "
+
+    #     f"Page {metadata['page'] + 1}"
+    # )
     return {
-        "question": query,
-        "answer": answer
-    }
+
+    "question": query,
+
+    "answer": answer
+    # , "sources": sources
+}
+
+results = hybrid_retrieve(
+    "leave policy"
+)
+
+print(type(results))
+print(results)

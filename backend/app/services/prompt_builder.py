@@ -1,12 +1,6 @@
 def build_context(results):
 
-    documents = results["documents"][0]
-
-    context = "\n\n".join(
-        documents
-    )
-
-    return context
+    return "\n\n".join(results)
 
 def build_prompt(
     query,

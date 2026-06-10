@@ -101,3 +101,77 @@ Tech Stack
 Setup Instructions
 Example Query
 Future Improvements
+
+Enterprise RAG Platform v2
+
+Features:
+
+- PDF ingestion
+- Semantic chunking
+- ChromaDB vector storage
+- BM25 retrieval
+- Hybrid retrieval (BM25 + Vector Search)
+- Metadata filtering
+- Citation generation
+- Retrieval benchmarking
+- FastAPI API
+- Ollama integration
+
+Metrics:
+
+Top-1 Accuracy: 100%
+Recall@3: 100%
+
+Architecture:
+
+User Query
+    ↓
+Hybrid Retrieval
+(BM25 + Vector)
+    ↓
+Fusion Layer
+    ↓
+Context Builder
+    ↓
+Ollama
+    ↓
+Answer
+
+# Enterprise RAG Platform v2
+
+## Features
+
+* PDF ingestion pipeline
+* Document chunking
+* Sentence Transformer embeddings
+* ChromaDB vector storage
+* BM25 retrieval
+* Hybrid retrieval (BM25 + Vector Search)
+* Metadata filtering
+* Citation generation
+* Retrieval benchmarking
+* Ollama local LLM integration
+* FastAPI REST API
+
+## Evaluation
+
+* Top-1 Accuracy: 100%
+* Recall@3: 100%
+
+## Tech Stack
+
+* Python
+* FastAPI
+* ChromaDB
+* Sentence Transformers
+* BM25
+* Ollama
+* LangChain
+
+## Future Enhancements
+
+* Hybrid retrieval with metadata-aware citations
+* Reranking
+* Multi-document corpora
+* RBAC access control
+* Streamlit UI

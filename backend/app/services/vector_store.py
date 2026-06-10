@@ -43,14 +43,20 @@ def store_chunks(chunks, embeddings):
 
 def search_chunks(
     query_embedding,
-    k=3
+    k=3,department=None
 ):
-
-    results = collection.query(
+    if department:
+        results = collection.query(
+        query_embeddings=[
+            query_embedding.tolist()
+        ],
+        n_results=k,where={"department":department}
+    )
+    else:
+      results = collection.query(
         query_embeddings=[
             query_embedding.tolist()
         ],
         n_results=k
-    )
-
+    )  
     return results

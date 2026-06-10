@@ -11,9 +11,34 @@ def load_all_pdfs(folder_path: str):
 
         documents = load_pdf(str(pdf_file))
 
+        filename = pdf_file.name
+
+        if "HR" in filename:
+            department = "HR"
+
+        elif "Finance" in filename:
+            department = "Finance"
+
+        elif "Engineering" in filename:
+            department = "Engineering"
+
+        else:
+            department = "General"
+
+
+        if department == "Finance":
+            access_level = "manager"
+        else:
+            access_level = "employee"
+
+
         for doc in documents:
 
-            doc.metadata["filename"] = pdf_file.name
+            doc.metadata["filename"] = filename
+
+            doc.metadata["department"] = department
+
+            doc.metadata["access_level"] = access_level
 
         all_documents.extend(documents)
 
