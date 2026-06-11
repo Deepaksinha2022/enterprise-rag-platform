@@ -6,6 +6,9 @@ from backend.app.services.retriever import (
     retrieve as vector_retrieve
 )
 
+from backend.app.retrieval.reranker import (
+    rerank
+)
 
 class HybridRetriever:
 
@@ -88,5 +91,7 @@ class HybridRetriever:
             bm25_results,
             vector_results
         )
+        reranked = rerank(query,fused_results)
+        final_results = [doc for doc, score in reranked]
 
-        return fused_results[:k]
+        return final_results[:k]
