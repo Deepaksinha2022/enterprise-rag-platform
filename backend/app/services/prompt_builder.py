@@ -1,16 +1,21 @@
+from backend.app.prompts.prompt_registry import (
+    PROMPTS
+)
+
 def build_context(results):
 
     return "\n\n".join(results)
 
 def build_prompt(
     query,
-    context
+    context,
+    version="v2"
 ):
-
-    prompt = f"""
-You are a helpful assistant.
-
-Use only the context below.
+    system_prompt = PROMPTS[
+    version
+]   
+    return f"""
+{system_prompt}
 
 Context:
 {context}
@@ -21,4 +26,3 @@ Question:
 Answer:
 """
 
-    return prompt
