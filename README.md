@@ -175,3 +175,56 @@ Answer
 * Multi-document corpora
 * RBAC access control
 * Streamlit UI
+
+
+# Enterprise RAG Platform v3
+
+## Overview
+
+Enterprise-grade Retrieval-Augmented Generation (RAG) system supporting hybrid retrieval, reranking, query enhancement, prompt management, and hallucination reduction.
+
+## Features
+
+- PDF Ingestion
+- Document Chunking
+- SentenceTransformer Embeddings
+- ChromaDB Vector Store
+- BM25 Retrieval
+- Hybrid Retrieval
+- CrossEncoder Reranking
+- Query Rewriting
+- Query Expansion
+- Metadata Filtering
+- Citation Generation
+- Hallucination Guardrails
+- Prompt Versioning
+- Context Compression
+- Latency Optimization
+
+## Architecture
+
+[Architecture Diagram]
+
+## Evaluation
+
+Top-1 Accuracy: 100%
+Recall@3: 100%
+Prompt Compression: ~42%
+Latency: 8.3s → 1.3s
+
+## Tech Stack
+
+Python
+FastAPI
+ChromaDB
+SentenceTransformers
+BM25
+Ollama
+LangChain
+
+## Future Work
+
+- Multi-document corpora
+- RBAC access control
+- Advanced metadata filtering
+- Production deployment

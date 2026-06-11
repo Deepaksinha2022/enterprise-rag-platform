@@ -17,6 +17,9 @@ from backend.app.services.llm import (
     generate_answer
 )
 
+from backend.app.services.context_compressor import (
+    compress_context
+)
 
 router = APIRouter()
 
@@ -42,9 +45,13 @@ async def ask_question(
             "I could not find this information in the provided documents."
         }
 
+    compressed_results = compress_context(
+    results
+)
+
     context = build_context(
-        results
-    )
+    compressed_results
+)
 
     prompt = build_prompt(
         query,
