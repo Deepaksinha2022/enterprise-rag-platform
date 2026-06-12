@@ -16,7 +16,7 @@ query_embedding = generate_embeddings(
 results = search_chunks(
     query_embedding,
     k=3,
-    department="General"
+    department="HR"
 )
 
 print("\nFILTERED RESULTS\n")

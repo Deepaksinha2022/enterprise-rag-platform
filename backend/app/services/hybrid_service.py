@@ -25,10 +25,12 @@ hybrid = HybridRetriever(
 
 def hybrid_retrieve(
     query,
-    k=3
+    k=3,
+    department=None
 ):
 
     return hybrid.retrieve(
         query,
-        k
+        k,
+        department
     )

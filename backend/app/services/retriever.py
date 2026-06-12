@@ -9,7 +9,8 @@ from backend.app.services.vector_store import (
 
 def retrieve(
     query,
-    k=3
+    k=3,
+    department=None
 ):
 
     query_embedding = generate_embeddings(
@@ -18,7 +19,8 @@ def retrieve(
 
     results = search_chunks(
         query_embedding,
-        k
+        k,
+        department
     )
 
     return results

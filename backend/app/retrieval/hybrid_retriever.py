@@ -74,7 +74,8 @@ class HybridRetriever:
     def retrieve(
         self,
         query,
-        k=3
+        k=3,
+        department=None
     ):
 
         bm25_results = self.bm25.retrieve(
@@ -84,7 +85,8 @@ class HybridRetriever:
 
         vector_results = vector_retrieve(
             query,
-            k
+            k,
+            department
         )
 
         fused_results = self.weighted_fusion(

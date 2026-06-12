@@ -21,6 +21,10 @@ from backend.app.services.context_compressor import (
     compress_context
 )
 
+from backend.app.services.user_service import (
+    get_user
+)
+
 router = APIRouter()
 
 
@@ -29,8 +33,13 @@ async def ask_question(
     query: str
 ):
 
+
+    user = get_user(
+    "finance_user"
+)
+
     results = hybrid_retrieve(
-        query
+        query,department=user.role
     )
 
     if not has_sufficient_evidence(
