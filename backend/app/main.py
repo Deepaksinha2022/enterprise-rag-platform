@@ -2,6 +2,8 @@ from fastapi import FastAPI
 
 from backend.app.api.v1.router import api_router
 from backend.app.core.config import settings
+from backend.app.api.routes import auth
+
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -23,6 +25,10 @@ def root():
 
 from backend.app.api.routes.chat import (
     router as chat_router
+)
+
+app.include_router(
+    auth.router
 )
 
 app.include_router(
