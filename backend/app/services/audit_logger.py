@@ -5,22 +5,28 @@ def log_access(
     username,
     role,
     query,
-    access_status
+    status
 ):
 
-    timestamp = datetime.now()
+    log_line = (
+        f"{datetime.now()} | "
+        f"{username} | "
+        f"{role} | "
+        f"{status} | "
+        f"{query}\n"
+    )
 
     print(
-
-        f"[AUDIT] "
-
-        f"{timestamp} | "
-
-        f"{username} | "
-
-        f"{role} | "
-
-        f"{access_status}"
-
-        f"{query}"
+        "[AUDIT]",
+        log_line
     )
+
+    with open(
+        "audit.log",
+        "a",
+        encoding="utf-8"
+    ) as file:
+
+        file.write(
+            log_line
+        )
