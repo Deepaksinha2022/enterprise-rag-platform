@@ -10,14 +10,11 @@ branches:
 - main
 
 jobs:
-
 build-and-test:
-
-```
 runs-on: ubuntu-latest
 
+```
 steps:
-
   - name: Checkout Code
     uses: actions/checkout@v4
 
@@ -29,10 +26,6 @@ steps:
   - name: Install Dependencies
     run: |
       pip install -r backend/requirements.txt
-
-  # - name: Run Unit Tests
-  #   run: |
-  #     pytest tests
 
   - name: Build Docker Image
     run: |
