@@ -25,6 +25,16 @@ for metric, values in metrics.items():
 
     avg = sum(values) / len(values)
 
+    minimum = min(values)
+
+    maximum = max(values)
+
+    count = len(values)
+
     print(
-        f"{metric}: avg={avg:.3f}"
+        f"{metric}\n"
+        f"  count={count}\n"
+        f"  avg={avg:.3f}\n"
+        f"  min={minimum:.3f}\n"
+        f"  max={maximum:.3f}\n"
     )

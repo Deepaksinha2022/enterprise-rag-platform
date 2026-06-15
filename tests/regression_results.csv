@@ -1,0 +1,4 @@
+question,expected_keyword,passed
+What is the reimbursement policy?,reimbursement,True
+What is the leave policy?,leave,False
+What is the travel reimbursement process?,travel,False

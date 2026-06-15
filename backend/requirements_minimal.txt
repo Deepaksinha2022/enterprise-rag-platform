@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+pydantic
+langchain
+langchain-community
+pypdf
+python-multipart
+sentence-transformers
+python-jose
+rank-bm25

@@ -1,0 +1,13 @@
+.venv
+.venv311
+__pycache__
+*.pyc
+.git
+.gitignore
+.vscode
+
+tests
+docs
+*.log
+metrics.log
+structure.txt

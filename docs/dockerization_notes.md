@@ -1,0 +1,10 @@
+- Created Dockerfile
+- Created .dockerignore
+- Built containerized FastAPI application
+- Resolved missing dependencies:
+  - python-jose
+  - rank-bm25
+  - cryptography
+  - chromadb
+- Successfully started Enterprise RAG inside Docker
+- Verified API startup using Uvicorn
