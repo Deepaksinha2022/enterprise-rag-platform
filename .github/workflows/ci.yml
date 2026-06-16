@@ -26,6 +26,10 @@ jobs:
         run: |
           pip install -r backend/requirements.txt
 
+      - name: Run Automated Tests
+        run: |
+          python -m pytest tests/test_health.py -v
+
       - name: Build Docker Image
         run: |
           docker build -t enterprise-rag-platform -f backend/Dockerfile .

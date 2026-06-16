@@ -1,0 +1,19 @@
+name: Enterprise RAG CD
+
+on:
+workflow_run:
+workflows:
+- Enterprise RAG CI
+types:
+- completed
+
+jobs:
+deployment-check:
+if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+runs-on: ubuntu-latest
+
+steps:
+  - name: Deployment Ready
+    run: |
+      echo "Deployment pipeline triggered successfully"
