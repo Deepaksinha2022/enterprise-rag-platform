@@ -4,10 +4,11 @@ from backend.app.services.user_service import (
     get_user
 )
 
-SECRET_KEY = "mysecretkey"
+import os
+
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 ALGORITHM = "HS256"
-
 
 def create_token(
     username
