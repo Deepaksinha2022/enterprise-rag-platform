@@ -23,13 +23,13 @@ hybrid = HybridRetriever(
 )
 
 
-def hybrid_retrieve(
+async def hybrid_retrieve(
     query,
     k=3,
     department=None
 ):
 
-    return hybrid.retrieve(
+    return await hybrid.retrieve(
         query,
         k,
         department

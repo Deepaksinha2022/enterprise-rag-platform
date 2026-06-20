@@ -1,230 +1,146 @@
-# Enterprise RAG Platform
+1. Overview
 
-## Overview
+Briefly describe the project.
 
-Enterprise RAG Platform is a Retrieval-Augmented Generation (RAG) application built using FastAPI, ChromaDB, Sentence Transformers, and Ollama.
+Enterprise RAG Platform is a production-oriented Retrieval-Augmented Generation system built with FastAPI, ChromaDB, Sentence Transformers, BM25, Hybrid Retrieval, JWT Authentication, RBAC, LangSmith observability, Docker, and CI/CD automation. The platform enables secure document ingestion, retrieval, and question-answering workflows.
 
-The system allows users to upload PDF documents, ingest them into a vector database, retrieve relevant information using semantic search, and generate grounded responses using a local LLM.
+2. Features
 
----
+List major capabilities.
 
-## Features
+Document ingestion
+ChromaDB vector storage
+BM25 retrieval
+Hybrid retrieval
+RAG pipeline
+JWT authentication
+RBAC authorization
+LangSmith observability
+RAGAS evaluation
+Docker deployment
+CI/CD automation
+3. Tech Stack
 
-* PDF Upload API
-* Document Ingestion Pipeline
-* Recursive Text Chunking
-* Metadata Enrichment
-* Embedding Generation (MiniLM)
-* Chroma Vector Database
-* Semantic Retrieval (Top-K Search)
-* Prompt Templates
-* Local LLM Integration (Ollama + Llama 3.2)
-* FastAPI REST Endpoints
+Summarize technologies.
 
----
+Backend: FastAPI
+Vector Database: ChromaDB
+Embeddings: Sentence Transformers
+Retrieval: BM25 + Hybrid Search
+Authentication: JWT + RBAC
+Observability: LangSmith
+Evaluation: RAGAS
+Containerization: Docker, Docker Compose
+CI/CD: GitHub Actions
 
-## Architecture
+4. Architecture
 
-PDF Upload
+Describe the flow.
 
-→ Document Loader
+User requests are authenticated through JWT-based security. Queries pass through the hybrid retrieval layer combining vector search and BM25 retrieval. Retrieved context is supplied to the LLM for response generation. LangSmith captures traces while RAGAS is used for evaluation and regression testing.
 
-→ Chunking
+5. Project Structure
 
-→ Metadata
+Explain major folders.
 
-→ Embeddings
+backend/
+frontend/
+data/
+tests/
+docs/
+infrastructure/
+scripts/
 
-→ ChromaDB
+Briefly explain each folder's purpose.
 
-→ Retriever
+6. Local Setup
 
-→ Prompt Builder
+Provide installation instructions.
 
-→ Llama 3.2
+git clone <repo>
+cd enterprise-rag-platform
 
-→ Answer
-
----
-
-## Tech Stack
-
-* Python
-* FastAPI
-* ChromaDB
-* Sentence Transformers
-* Ollama
-* Llama 3.2
-* Uvicorn
-
----
-
-## Run Locally
-
-Install dependencies:
-
-pip install -r requirements.txt
-
-Start API:
+python -m venv .venv
+pip install -r backend/requirements.txt
 
 uvicorn backend.app.main:app --reload
 
-Open:
+Mention .env configuration.
 
-http://127.0.0.1:8000/docs
+7. API Endpoints
 
----
+Document key endpoints.
 
-## Example Flow
+Endpoint	Method	Purpose
+/	GET	Root endpoint
+/health	GET	Health check
+/docs	GET	Swagger UI
+Your RAG endpoints	POST	Question answering
+8. Example Workflow
 
-1. Upload PDF
-2. Run ingestion pipeline
-3. Ask question
-4. Retrieve relevant chunks
-5. Generate grounded answer
+Explain end-to-end usage.
 
----
+Upload documents
+Generate embeddings
+Store vectors in ChromaDB
+Submit query
+Retrieve relevant context
+Generate answer
+Observe traces in LangSmith
+9. Evaluation Results
 
-## Future Improvements
+Summarize RAGAS work.
 
-* Hybrid Search
-* Re-ranking
-* Multi-document Retrieval
-* Conversation Memory
-* Production Deployment
-* Monitoring & Observability
+The platform was evaluated using RAGAS metrics including Faithfulness, Answer Relevance, and Context Precision. Regression testing was implemented to ensure retrieval and generation quality remained stable across updates.
 
+10. Deployment
 
-Project Overview
-Architecture Diagram
-Tech Stack
-Setup Instructions
-Example Query
-Future Improvements
+Describe deployment status.
 
-Enterprise RAG Platform v2
+The application is containerized using Docker and Docker Compose. CI/CD pipelines are implemented with GitHub Actions. The platform has been deployed and validated in a cloud environment using Railway.
 
-Features:
+11. Future Enhancements
 
-- PDF ingestion
-- Semantic chunking
-- ChromaDB vector storage
-- BM25 retrieval
-- Hybrid retrieval (BM25 + Vector Search)
-- Metadata filtering
-- Citation generation
-- Retrieval benchmarking
-- FastAPI API
-- Ollama integration
+List next-stage improvements.
 
-Metrics:
+Redis caching
+Multi-tenant support
+Streaming responses
+Advanced reranking
+Kubernetes deployment
+Additional evaluation datasets
+Cost monitoring dashboards
 
-Top-1 Accuracy: 100%
-Recall@3: 100%
+After this, your README is essentially portfolio-ready.
 
-Architecture:
-
-User Query
-    ↓
-Hybrid Retrieval
-(BM25 + Vector)
-    ↓
-Fusion Layer
-    ↓
-Context Builder
-    ↓
-Ollama
-    ↓
-Answer
-
-# Enterprise RAG Platform v2
-
-## Features
-
-* PDF ingestion pipeline
-* Document chunking
-* Sentence Transformer embeddings
-* ChromaDB vector storage
-* BM25 retrieval
-* Hybrid retrieval (BM25 + Vector Search)
-* Metadata filtering
-* Citation generation
-* Retrieval benchmarking
-* Ollama local LLM integration
-* FastAPI REST API
-
-## Evaluation
-
-* Top-1 Accuracy: 100%
-* Recall@3: 100%
-
-## Tech Stack
-
-* Python
-* FastAPI
-* ChromaDB
-* Sentence Transformers
-* BM25
-* Ollama
-* LangChain
-
-## Future Enhancements
-
-* Hybrid retrieval with metadata-aware citations
-* Reranking
-* Multi-document corpora
-* RBAC access control
-* Streamlit UI
-
-
-# Enterprise RAG Platform v3
-
-## Overview
-
-Enterprise-grade Retrieval-Augmented Generation (RAG) system supporting hybrid retrieval, reranking, query enhancement, prompt management, and hallucination reduction.
-
-## Features
-
-- PDF Ingestion
-- Document Chunking
-- SentenceTransformer Embeddings
-- ChromaDB Vector Store
-- BM25 Retrieval
-- Hybrid Retrieval
-- CrossEncoder Reranking
-- Query Rewriting
-- Query Expansion
-- Metadata Filtering
-- Citation Generation
-- Hallucination Guardrails
-- Prompt Versioning
-- Context Compression
-- Latency Optimization
 
 ## Architecture
 
-[Architecture Diagram]
+![Architecture Diagram](docs/architecture.png)
 
-## Evaluation
+## Performance Metrics
 
-Top-1 Accuracy: 100%
-Recall@3: 100%
-Prompt Compression: ~42%
-Latency: 8.3s → 1.3s
+| Metric | Value |
+|----------|----------|
+| Cache Hit Ratio | Tracked |
+| Semantic Cache Hits | Tracked |
+| LLM Calls Saved | Tracked |
+| Retrieval Latency | Tracked |
+| LLM Latency | Tracked |
+| Request Latency | Tracked |
+| Estimated Cost/Query | Tracked |
+| SSE Streaming | Implemented |
+| TTFT | 3.586s |
+| Semantic Cache Similarity Threshold | 0.80 |
 
-## Tech Stack
 
-Python
-FastAPI
-ChromaDB
-SentenceTransformers
-BM25
-Ollama
-LangChain
+## Optimizations Implemented
 
-## Future Work
-
-- Multi-document corpora
-- RBAC access control
-- Advanced metadata filtering
-- Production deployment
+- Redis Exact Match Cache
+- Semantic Cache (Sentence Transformers)
+- Async Embedding Generation
+- Concurrent Embeddings using run_in_executor
+- SSE Streaming
+- True Ollama Streaming
+- Cost Tracking
+- Latency Tracking

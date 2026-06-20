@@ -7,7 +7,7 @@ from backend.app.services.vector_store import (
 )
 
 
-def retrieve(
+async def retrieve(
     query,
     k=3,
     department=None

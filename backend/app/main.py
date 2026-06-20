@@ -24,6 +24,9 @@ def root():
         "message": "Enterprise RAG Platform Running"
     }
 
+@app.get("/health")
+def health():
+    return {"status": "healthy"}
 
 from backend.app.api.routes.chat import (
     router as chat_router
@@ -38,3 +41,4 @@ app.include_router(
     prefix="/chat",
     tags=["chat"]
 )
+

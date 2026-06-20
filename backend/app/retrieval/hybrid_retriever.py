@@ -71,7 +71,7 @@ class HybridRetriever:
             in ranked_results
         ]
 
-    def retrieve(
+    async def retrieve(
         self,
         query,
         k=3,
@@ -83,7 +83,7 @@ class HybridRetriever:
             k
         )
 
-        vector_results = vector_retrieve(
+        vector_results = await vector_retrieve(
             query,
             k,
             department
