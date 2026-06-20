@@ -78,7 +78,12 @@ from backend.app.services.cache_service import (
 )
 
 from fastapi.responses import StreamingResponse
+
 import asyncio
+
+from backend.app.services.benchmark_logger import (
+    log_latency_metrics
+)
 
 router = APIRouter()
 security = HTTPBearer()
@@ -232,6 +237,7 @@ async def ask_question(
     llm_duration
 )
 
+    
     if "I could not find this information" in answer:
         status = "NO_MATCH"
     else:
@@ -244,12 +250,21 @@ async def ask_question(
     query,
     status
 )
+    
     request_duration = end_timer(
     request_start
 )
+    
     log_metric(
     "request_latency",
     request_duration
+)
+    
+    log_latency_metrics(
+    request_duration,
+    retrieval_duration,
+    llm_duration,
+    0
 )
 
     save_cached_answer(
@@ -450,6 +465,8 @@ async def ask_stream(
 # )
     
     import json
+    
+    ttft_value =0
 
     async def generate():
 
@@ -476,6 +493,7 @@ async def ask_stream(
                             time.time() -
                             request_start
                         )
+                        ttft_value = first_token_sent
 
                         print(
                             f"[METRIC] ttft: {first_token_time:.3f}s"
@@ -490,12 +508,19 @@ async def ask_stream(
             except Exception:
 
                 continue
+    
+    log_latency_metrics(
+    request_duration,
+    retrieval_duration,
+    llm_duration,
+    ttft_value
+    )
 
     return StreamingResponse(
         generate(),
         media_type="text/event-stream"
     )
-
+    
 @router.get("/stream-test")
 async def stream_test():
 
