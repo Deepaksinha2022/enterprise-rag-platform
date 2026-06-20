@@ -1,4 +1,11 @@
-question,ground_truth
-What is the reimbursement policy?,The expense reimbursement policy outlines reimbursement for university expenses incurred by faculty and staff.
-What is the leave policy?,Employees are entitled to leave according to organizational leave guidelines.
-What is the travel reimbursement process?,Travel expenses may be reimbursed after submission of approved documentation.
+question,expected_chunk_id
+What is the purpose of the Code of Conduct and Ethics?,4
+Who does the Code of Conduct apply to?,5
+How does the company expect employees to behave ethically?,8
+What is a conflict of interest?,9
+To whom should a conflict of interest be disclosed?,9
+What is the company's approach to regulatory compliance?,6
+How should employees treat individuals in the workplace?,7
+Does the company tolerate harassment?,7
+What are the expectations from business partners of the company?,6
+What standards of business conduct does the company promote?,4

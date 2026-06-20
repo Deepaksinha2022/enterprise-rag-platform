@@ -144,3 +144,54 @@ After this, your README is essentially portfolio-ready.
 - True Ollama Streaming
 - Cost Tracking
 - Latency Tracking
+
+## RAG Evaluation
+
+| Metric | Score |
+|----------|----------|
+| Answer Relevancy | 0.8425 |
+
+
+## Evaluation Metrics
+
+| Metric | Score |
+|---------|---------|
+| Answer Relevancy (Gemini) | 0.8006 |
+| Answer Relevancy (Local Llama3.2) | 0.6431 |
+
+Evaluation Stack:
+- RAGAS
+- Ollama Llama3.2
+- all-MiniLM-L6-v2 Embeddings
+- LangSmith Tracing
+
+## Performance Metrics
+
+## Performance Metrics
+
+| Metric | Value |
+|----------|----------|
+| Precision@5 | 0.145 |
+| Recall@5 | 0.725 |
+| HitRate@5 | 0.725 |
+| Precision@10 | 0.0848 |
+| Recall@10 | 0.8485 |
+| HitRate@10 | 0.8485 |
+| Avg Request Latency | 14.17 sec |
+| P50 Request Latency | 11.29 sec |
+| P95 Request Latency | 22.13 sec |
+| P99 Request Latency | 52.37 sec |
+| Avg Retrieval Latency | 1.72 sec |
+| P50 Retrieval Latency | 0.90 sec |
+| P95 Retrieval Latency | 5.92 sec |
+| P99 Retrieval Latency | 7.90 sec |
+| Avg LLM Latency | 12.39 sec |
+| P50 LLM Latency | 10.35 sec |
+| P95 LLM Latency | 19.77 sec |
+| P99 LLM Latency | 45.14 sec |
+| Cache Hit Ratio | 71.43% |
+| Estimated Cost / Query | $0.000242 |
+| Evaluation Dataset Size | 33 Questions |
+| Retrieval Method | Hybrid (BM25 + Dense) |
+| Embedding Model | all-MiniLM-L6-v2 |
+| LLM | Llama 3.2 (Ollama) |

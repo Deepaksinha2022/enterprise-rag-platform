@@ -60,3 +60,33 @@
 | TTFT | 3.586s |
 | Semantic Cache | Implemented |
 | SSE Streaming | Implemented |
+
+## Task 6 - RAGAS Evaluation
+
+### Answer Relevancy
+
+Score: 0.8425
+
+Evaluation Model:
+- Gemini 2.5 Flash
+
+Embedding Model:
+- sentence-transformers/all-MiniLM-L6-v2
+
+Dataset Size:
+- 2 evaluation samples (test run)
+
+Status:
+- Passed
+
+## Task 6 - RAGAS Evaluation
+
+### Answer Relevancy
+
+| Run | Model | Score |
+|------|--------|--------|
+| 1 | Gemini 2.5 Flash | 0.8006 |
+| 2 | Ollama Llama3.2 | 0.4701 |
+| 3 | Ollama Llama3.2 | 0.6431 |
+
+Status: Completed

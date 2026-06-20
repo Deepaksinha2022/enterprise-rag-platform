@@ -411,19 +411,19 @@ async def ask_stream(
         prompt
     )
 
-#     output_tokens = estimate_tokens(
-#     answer_stream
-# )
+    output_tokens = estimate_tokens(
+    answer_stream
+)
     
-#     estimated_cost = estimate_cost(
-#     input_tokens,
-#     output_tokens
-# )
+    estimated_cost = estimate_cost(
+    input_tokens,
+    output_tokens
+)
 
-#     log_metric(
-#     "estimated_cost_usd",
-#     estimated_cost
-# )
+    log_metric(
+    "estimated_cost_usd",
+    estimated_cost
+)
 
     llm_duration = end_timer(
     llm_start
@@ -434,18 +434,18 @@ async def ask_stream(
     llm_duration
 )
 
-    # if "I could not find this information" in answer_stream:
-    #     status = "NO_MATCH"
-    # else:
-    #     status = "ANSWERED"
+    if "I could not find this information" in answer_stream:
+        status = "NO_MATCH"
+    else:
+        status = "ANSWERED"
 
     
-#     log_access(
-#     user.username,
-#     user.role,
-#     query,
-#     status
-# )
+    log_access(
+    user.username,
+    user.role,
+    query,
+    status
+)
     request_duration = end_timer(
     request_start
 )
