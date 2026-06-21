@@ -116,7 +116,7 @@ After this, your README is essentially portfolio-ready.
 
 ## Architecture
 
-![Architecture Diagram](docs/architecture.png)
+![Architecture](docs/architecture.png)
 
 ## Performance Metrics
 
