@@ -13,7 +13,7 @@ semantic_cache_hits = 0
 semantic_cache_saves = 0
 
 redis_client = redis.Redis(
-    host="localhost",
+    host="redis-cache",
     port=6379,
     decode_responses=True
 
@@ -27,32 +27,33 @@ def get_cached_answer(
         f"query:{query.lower()}"
     )
 
-    result = redis_client.get(
-        cache_key
-    )
+    # result = redis_client.get(
+    #     cache_key
+    # )
 
-    if result:
+    # if result:
 
-        cache_hit()
+    #     cache_hit()
 
-    else:
+    # else:
 
-        cache_miss()
+    #     cache_miss()
 
-    return result
+    return None
 
 def save_cached_answer(
     query,
     answer,
     ttl=3600
 ):
-    cache_key = f"query:{query.lower()}"
+    return
+    # cache_key = f"query:{query.lower()}"
 
-    redis_client.setex(
-        cache_key,
-        ttl,
-        answer
-    )
+    # redis_client.setex(
+    #     cache_key,
+    #     ttl,
+    #     answer
+    # )
 
 def cache_hit():
 

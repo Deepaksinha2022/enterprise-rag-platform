@@ -214,19 +214,19 @@ async def ask_question(
         prompt
     )
 
-    output_tokens = estimate_tokens(
-    answer
-)
+#     output_tokens = estimate_tokens(
+#     answer
+# )
     
-    estimated_cost = estimate_cost(
-    input_tokens,
-    output_tokens
-)
+#     estimated_cost = estimate_cost(
+#     input_tokens,
+#     output_tokens
+# )
 
-    log_metric(
-    "estimated_cost_usd",
-    estimated_cost
-)
+#     log_metric(
+#     "estimated_cost_usd",
+#     estimated_cost
+# )
 
     llm_duration = end_timer(
     llm_start
@@ -238,10 +238,12 @@ async def ask_question(
 )
 
     
-    if "I could not find this information" in answer:
-        status = "NO_MATCH"
-    else:
-        status = "ANSWERED"
+    # if "I could not find this information" in answer:
+    #     status = "NO_MATCH"
+    # else:
+    #     status = "ANSWERED"
+
+    status="ANSWERED"
 
     
     log_access(
@@ -411,19 +413,19 @@ async def ask_stream(
         prompt
     )
 
-    output_tokens = estimate_tokens(
-    answer_stream
-)
+#     output_tokens = estimate_tokens(
+#     answer_stream
+# )
     
-    estimated_cost = estimate_cost(
-    input_tokens,
-    output_tokens
-)
+#     estimated_cost = estimate_cost(
+#     input_tokens,
+#     output_tokens
+# )
 
-    log_metric(
-    "estimated_cost_usd",
-    estimated_cost
-)
+#     log_metric(
+#     "estimated_cost_usd",
+#     estimated_cost
+# )
 
     llm_duration = end_timer(
     llm_start
@@ -434,11 +436,12 @@ async def ask_stream(
     llm_duration
 )
 
-    if "I could not find this information" in answer_stream:
-        status = "NO_MATCH"
-    else:
-        status = "ANSWERED"
+    # if "I could not find this information" in answer_stream:
+    #     status = "NO_MATCH"
+    # else:
+    #     status = "ANSWERED"
 
+    status="ANSWERED"
     
     log_access(
     user.username,
@@ -474,40 +477,21 @@ async def ask_stream(
 
         async for chunk in answer_stream:
 
-            try:
+            if chunk:
 
-                data = json.loads(
-                    chunk
-                )
+                if not first_token_sent:
 
-                token = data.get(
-                    "response",
-                    ""
-                )
-
-                if token:
-
-                    if not first_token_sent:
-
-                        first_token_time = (
-                            time.time() -
-                            request_start
-                        )
-                        ttft_value = first_token_sent
-
-                        print(
-                            f"[METRIC] ttft: {first_token_time:.3f}s"
-                        )
-
-                        first_token_sent = True
-
-                    yield (
-                        f"data: {token}\n\n"
+                    first_token_time = (
+                        time.time() - request_start
                     )
 
-            except Exception:
+                    print(
+                        f"[METRIC] ttft: {first_token_time:.3f}s"
+                    )
 
-                continue
+                    first_token_sent = True
+
+                yield f"data: {chunk}\n\n"
     
     log_latency_metrics(
     request_duration,

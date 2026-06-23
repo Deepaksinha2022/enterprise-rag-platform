@@ -11,7 +11,7 @@ start_time = time.time()
 
 results = hybrid_retrieve(
     query,
-    k=5
+    k=3
 )
 
 end_time = time.time()

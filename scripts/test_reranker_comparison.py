@@ -6,7 +6,7 @@ query = "sick leave policy"
 
 results = hybrid_retrieve(
     query,
-    k=5
+    k=3
 )
 
 print("\nHYBRID RESULTS\n")

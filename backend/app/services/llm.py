@@ -1,42 +1,53 @@
-import httpx
+from groq import AsyncGroq
+import os
+
+client = AsyncGroq(
+    api_key=os.getenv("GROQ_API_KEY")
+)
 
 async def generate_answer(prompt):
 
     try:
-        async with httpx.AsyncClient() as client:
 
-            response = await client.post(
-                "http://localhost:11434/api/generate",
-                json={
-                    "model": "llama3.2",
-                    "prompt": prompt,
-                    "stream": False,
-                },
-                timeout=90
-            )
-        return response.json()["response"]
+        response = await client.chat.completions.create(
+            model="llama-3.1-8b-instant",
+            messages=[
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
+            temperature=0
+        )
+
+        return response.choices[0].message.content
+
     except Exception as e:
+
         return f"LLM Error: {repr(e)}"
     
-async def generate_answer_stream(
-    prompt
-):
+async def generate_answer_stream(prompt):
 
-    async with httpx.AsyncClient() as client:
+    response = await client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        messages=[
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ],
+        temperature=0,
+        stream=True
+    )
 
-        async with client.stream(
-            "POST",
-            "http://localhost:11434/api/generate",
-            json={
-                "model": "llama3.2",
-                "prompt": prompt,
-                "stream": True
-            },
-            timeout=90
-        ) as response:
+    async for chunk in response:
 
-            async for line in response.aiter_lines():
+        content = (
+            chunk.choices[0]
+            .delta
+            .content
+        )
 
-                if line:
+        if content:
 
-                    yield line
+            yield content

@@ -195,3 +195,56 @@ Evaluation Stack:
 | Retrieval Method | Hybrid (BM25 + Dense) |
 | Embedding Model | all-MiniLM-L6-v2 |
 | LLM | Llama 3.2 (Ollama) |
+
+
+********************************************
+### Day 1 – Ollama → Groq Migration
+
+Problem:
+
+* High LLM inference latency
+
+Before:
+
+* LLM Latency: ~12.39s
+* End-to-End Latency: ~14s
+
+Solution:
+
+* Replaced local Ollama inference with Groq API
+* Retained existing prompts and retrieval pipeline
+
+After:
+
+* Retrieval Latency: 1.008s
+* LLM Latency: 0.997s
+* End-to-End Latency: 2.011s
+
+Impact:
+
+* ~92% reduction in LLM latency
+* Faster user experience
+* Improved production readiness
+
+
+Interview Answer
+
+Latency improved because I moved inference from locally hosted Ollama to Groq's cloud inference infrastructure. The bottleneck was model execution, not retrieval. Groq uses specialized hardware optimized for LLM inference, reducing LLM latency from approximately 12.39 seconds to about 1 second while keeping the retrieval pipeline and prompt structure unchanged.
+
+*************************************************
+
+Model: llama-3.1-8b-instant
+Top-K: 3
+
+Best TTFT: 0.788s
+Average TTFT: ~1.2s–1.4s
+Best Retrieval: 0.50s
+Average Retrieval: ~0.60s
+
+Streaming: Enabled
+Groq Migration: Complete
+
+Target TTFT: 0.4s
+Achieved: 0.788s
+
+Completion: 85%
